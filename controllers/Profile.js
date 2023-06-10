@@ -4,7 +4,7 @@ const { uploadImageToCloudinary } = require("../utils/imageUploader");
 // Method for updating a profile
 exports.updateProfile = async (req, res) => {
 	try {
-		const { dateOfBirth = "", about = "", contactNumber } = req.body; //get data
+		const { dateOfBirth = "", about = "", contactNumber="" , gender=""} = req.body; //get data
 		const id = req.user.id; //get userId
 
 		// Find the profile by id
@@ -15,6 +15,7 @@ exports.updateProfile = async (req, res) => {
 		profile.dateOfBirth = dateOfBirth;
 		profile.about = about;
 		profile.contactNumber = contactNumber;
+		profile.gender = gender;
 
 		// Save the updated profile
 		await profile.save(); // yha object bna pda he Auth.js me isliye .save() use kiya varna .create() use krna he
